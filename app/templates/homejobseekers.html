@@ -1,64 +1,247 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="shortcut icon" src= {{ url_for('static', filename='images/hireLogo.ico') }} />
+        <title>Recruitment website to help you find the best jobs, employment - SavvyHire</title>
+        <meta charset="UTF-8">
+        <meta name="robots" content="INDEX,FOLLOW" />
+        <meta name="description" content="SavvyHire is a recruitment website for finding employment! Let employers find you with our unique search design! So create your digital cv with us now!">
+        <meta name="keywords" content="Recruitment website Sydney, recruitment platform Sydney, Recruitment sydney, jobs sydney, indeed sydney, seek sydney, employment website sydney, employment website, employment agency sydney, employment website sydney, employment website, savvy hire sydney, savvyhire sydney, savvyhire, savvy hire, savvy hire recuitment platform, savvyhire recruitment platform, savvyhire recruitment website, savvyhire recruitment, savvy hire recruitment website, savvy hire recruitment agency, savvyhire jobs, savvy hire jobs, savvyhire job search, savvy hire job search, job search">
+        <meta name="author" content="WeiYew Teoh, Thang Do">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <link rel="stylesheet" href= {{ url_for('static', filename='CSS/semantic.css') }} >
+        <link rel="stylesheet" href= {{ url_for('static', filename='CSS/semantic.min.css') }} >
+        <link rel="stylesheet" href= {{ url_for('static', filename='CSS/savvy.css') }} >
+        <script src= {{ url_for('static', filename='CSS/semantic.js') }}></script>
+        <script src= {{ url_for('static', filename='CSS/semantic.min.js') }}></script>
+        <script src= {{ url_for('static', filename='CSS/savvy.js') }}></script>
+        <script src= {{ url_for('static', filename='CSS/elevator.js') }}></script>
 
-{% block script %}
-{% endblock %}
+        <!-- Google Analyics -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                ga('create', 'UA-73956731-1', 'auto');
+                ga('send', 'pageview');
+        </script>
 
-{% block content %}
-    <!--Facebook social plugin-->
-    <div class="fb-like facebook-social-plugin" data-href="https://www.facebook.com/savvyhiring/?fref=ts" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+        <!-- Inspectlet Script -->
+        <!-- Begin Inspectlet Embed Code -->
+        <script type="text/javascript" id="inspectletjs">
+            window.__insp = window.__insp || [];
+            __insp.push(['wid', 1983644521]);
+            (function() {
+                function ldinsp(){
+                    if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+                setTimeout(ldinsp, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
+            })();
+        </script>
 
-    <div class = "ui white vertical masthead center aligned">
-        <div id="bgvid">
-            <!--
-            <video autoplay loop>
-                <source class="videobg" src= {{ url_for('static', filename='videos/343647377.mp4') }} type="video/mp4">
-            </video>-->
-            <img src= {{ url_for('static', filename='images/operahouse.jpeg') }} alt="HTML5 Icon" style="width:100%;height:auto;">
-            <div id="savvy">
-                <img id="logo" src= {{ url_for('static', filename='images/logo.png') }} />
-                <h2>The new way to hire is here!</h2>
-                <p>
-                    Join for free today and get access to jobs available in Sydney.
-                </p>
+        <!-- SumoMe script -->
+        <script src="//load.sumome.com/"
+            data-sumo-site-id="17c99f2f78cc42fc7f56f742134b13f569c98af76402a6e0d358dc2a6d2bc328" async="async">
+        </script>
 
-                {% if user_logged_in == false %}
-                    <a class="ui fluid large blue icon button" href= {{ url_for('register') }} >Find Jobs</a>
+        <!-- End Inspectlet Embed Code -->
 
-                {% endif %}
-            </div>
-        </div>
-    </div>
-    <div class="ui vertical stripe quote segment">
-        <h2 class="ui horizontal header divider" style="font-size:4em;margin-bottom: -7%;margin-top: 5%;">
-            <a href="#">Why use SavvyHire</a>
-        </h2>
-        <div class="ui equal width stackable internally grid">
-            <div class="center aligned row">
-                <div class="column" id="homeText">
-                    <img src="//d9hhrg4mnvzow.cloudfront.net/unbouncepages.com/savvyhire/94f84f4e-map-icon.png" alt="">
-                    <h3>Filter right</h3>
-                    <p>Save time using our filters to search only the right jobs</p>
+        <!-- Additional Script -->
+    </head>
+    <body>
+        <!--Facebook social plugin-->
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+        <div id="wrapper">
+            <main id="content" class="clearfix">
+                <!-- Warning message. Activated by flash() in views.py -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class= 'ui {{ category }} icon message attached small transition'>
+                                <i class="announcement icon"></i>
+                                <i class="close icon"></i>
+                                <div class="content">
+                                    <div class="header">
+                                        {{ message }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor%}
+                    {% endif %}
+                {% endwith %}
+
+                <div class="ui attached medium top menu">
+                    <a href= {{ url_for('home') }} class="header item">
+                        <img class='avatar image' src= {{ url_for('static', filename='images/logo.png') }} />
+                    </a>
+
+                    {% if user_logged_in == false %}
+                        <a href= {{ url_for('login') }} class="item">
+                            <i class="sign in icon"></i>
+                            Sign In
+                        </a>
+                        <a href= {{ url_for('register') }} class="item">
+                            <i class="add user icon"></i>
+                            Register
+                        </a>
+                        <div class="right menu">
+                            {% if extra == 'homejobseekers' %}
+                                <a href= {{ url_for('home') }} class="header item">
+                                    <i class="chevron right icon"></i>
+                                    for Employers
+                                </a>
+                            {% else %}
+                                <a href= {{ url_for('homejobseekers') }} class="header item">
+                                    <i class="chevron right icon"></i>
+                                    for Job Seekers
+                                </a>
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        {% if user.get('category', '').lower() == 'employer' %}
+                            <a href= {{ url_for('search') }} class="item">
+                                Search
+                            </a>
+                        {% else %}
+                        <a href= {{ url_for('jobSearch') }} class="item">
+                            Search
+                        </a>
+                        {% endif %}
+                        <div class="ui pointing dropdown link item">
+                            <i class="child icon"></i>
+                            Welcome back {{ user.get('email', None) }}
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <div class="header">Account Setting</div>
+                                <a href= {{ url_for('account') }} class="item">My Profile</a>
+                                <div class="divider"></div>
+                                <div class="header">Jobs</div>
+                                {% if user.get('category', '').lower() == 'employer' %}
+                                    <a href= {{ url_for('postJob') }} class="item">Post A Job</a>
+                                    <div class="item">Manage Jobs <small style="color:#21BA45">Coming soon!</small></div>
+                                {% else %}
+                                    <div class="item">My applications <small style="color:#21BA45">Coming soon!</small></div>
+                                    <div class="item">Contacts <small style="color:#21BA45">Coming soon!</small></div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="right menu">
+                            <a class="item" href= {{ url_for('logout') }} >
+                                <i class="sign out icon"></i>
+                                Log Out
+                            </a>
+                        </div>
+                    {% endif %}
                 </div>
-                <div class="column" id="homeText">
-                    <img src="//d9hhrg4mnvzow.cloudfront.net/unbouncepages.com/savvyhire/e43ad230-book-icon.png" alt="">
-                    <h3>Digital CV</h3>
-                    <p>Your profile is like a digital CV, <strong>much</strong> better than a boring print out</p>
-                </div>
-                <div class="column" id="homeText">
-                    <img src="//d9hhrg4mnvzow.cloudfront.net/unbouncepages.com/savvyhire/7cb63ed8-luggage-icon.png" alt="">
-                    <h3>Get noticed</h3>
-                    <p id="home">Make a work profile with us and if employers like it they will send you an expression of interest! <br><small>even while you are on holiday!</small></p>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="ui vertical stripe">
-        <div class="ui middle aligned stackable grid container">
-            <div class="center aligned column">
-                <h3>What are you waiting for?</h3>
-                <a class="ui large blue icon button" href= {{ url_for('register') }} >Find Jobs</a>
-            </div>
+                <!-- Main Body -->
+                <!--Facebook social plugin-->
+                <div class="fb-like facebook-social-plugin" data-href="https://www.facebook.com/savvyhiring/?fref=ts" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+
+                <div class = "ui white vertical masthead center aligned">
+                    <div id="bgvid">
+                        <!--
+                        <video autoplay loop>
+                            <source class="videobg" src= {{ url_for('static', filename='videos/343647377.mp4') }} type="video/mp4">
+                        </video>-->
+                        <img src= {{ url_for('static', filename='images/operahouse.jpeg') }} alt="HTML5 Icon" style="width:100%;height:auto;">
+                        <div id="savvy">
+                            <img id="logo" src= {{ url_for('static', filename='images/logo.png') }} />
+                            <h2>The new way to hire is here!</h2>
+                            <p>
+                                Join for free today and get access to jobs available in Sydney.
+                            </p>
+
+                            {% if user_logged_in == false %}
+                                <a class="ui fluid large blue icon button" href= {{ url_for('register') }} >Find Jobs</a>
+
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="ui vertical stripe quote segment">
+                    <h2 class="ui horizontal header divider" style="font-size:4em;margin-bottom: -7%;margin-top: 5%;">
+                        <a href="#">Why use SavvyHire</a>
+                    </h2>
+                    <div class="ui equal width stackable internally grid">
+                        <div class="center aligned row">
+                            <div class="column" id="homeText">
+                                <img src="//d9hhrg4mnvzow.cloudfront.net/unbouncepages.com/savvyhire/94f84f4e-map-icon.png" alt="">
+                                <h3>Filter right</h3>
+                                <p>Save time using our filters to search only the right jobs</p>
+                            </div>
+                            <div class="column" id="homeText">
+                                <img src="//d9hhrg4mnvzow.cloudfront.net/unbouncepages.com/savvyhire/e43ad230-book-icon.png" alt="">
+                                <h3>Digital CV</h3>
+                                <p>Your profile is like a digital CV, <strong>much</strong> better than a boring print out</p>
+                            </div>
+                            <div class="column" id="homeText">
+                                <img src="//d9hhrg4mnvzow.cloudfront.net/unbouncepages.com/savvyhire/7cb63ed8-luggage-icon.png" alt="">
+                                <h3>Get noticed</h3>
+                                <p id="home">Make a work profile with us and if employers like it they will send you an expression of interest! <br><small>even while you are on holiday!</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui vertical stripe">
+                    <div class="ui middle aligned stackable grid container">
+                        <div class="center aligned column">
+                            <h3>What are you waiting for?</h3>
+                            <a class="ui large blue icon button" href= {{ url_for('register') }} >Find Jobs</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PrefixFree to deal with vendor prefixes -->
+                <script src="http://thecodeplayer.com/uploads/js/prefixfree-1.0.7.js" type="text/javascript"></script>
+                </main>
+                <footer id="footer">
+                <div class = "ui white vertical footer segment" style="margin-top:0%;">
+                    <div class="ui container">
+                        <div class="ui stackable inverted divided equal height stackable grid">
+                            <div class="three wide column">
+                                <h4 class="ui black header">About</h4>
+                                <div class="ui black link list">
+                                    <a href= {{ url_for('about') }} class="item">About Us</a>
+                                    {% if user_logged_in == false %}
+                                    <a href= {{ url_for('home') }} class="item">for Employers</a>
+                                    <a href= {{ url_for('homejobseekers') }} class="item">for Job Seekers</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="five wide column">
+                                <h4 class="ui black header">Others</h4>
+                                <div class="ui black link list">
+                                    <a href="http://www.savvysme.com.au" target="_blank" class="item">SavvySME</a>
+                                    <a a href= {{ url_for('terms') }} target="_blank" class="item">Terms and Conditions</a>
+                                </div>
+                            </div>
+
+                            <div class="three wide column three-wide-column-facebook-icon">
+                                <a href="https://www.facebook.com/savvyhiring/?fref=ts" target="_blank"><i class="facebook icon facebook-icon"></i></a>
+                            </div>
+
+                            <div class="five wide column">
+                                <small>© Copyright 2016, <a href="https://www.savvysme.com.au/" target="_blank">SavvySME</a></small>
+                                <p>For any enquiries contact : <a href="mailto:weiyew@savvysme.com.au">
+                                weiyew@savvysme.com.au</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
-    </div>
-{% endblock %}
+    </body>
+</html>
